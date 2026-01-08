@@ -25,7 +25,8 @@ public class NewMonoBehaviourScript : MonoBehaviour
             Vector3 position = transform.position;
             position.x += Random.Range(-5f, 5f);
             position.z += Random.Range(-5f, 5f);
-            Instantiate(spawnObject, position, transform.rotation);
+            var go = Instantiate(spawnObject, position, transform.rotation);
+            Destroy(go, 4);
         }
     }
 }
