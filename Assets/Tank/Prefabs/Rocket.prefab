@@ -50,7 +50,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Rocket
   effect: {fileID: 1404802046468498, guid: 2938def9583039b498280fae52bf6fd4, type: 3}
-  speed: 25
+  speed: 50
 --- !u!33 &2972538111106208778
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -151,7 +151,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
@@ -205,7 +205,7 @@ TrailRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Time: 5
+  m_Time: 1
   m_PreviewTimeScale: 1
   m_Parameters:
     serializedVersion: 3
@@ -223,13 +223,13 @@ TrailRenderer:
         inWeight: 0.33333334
         outWeight: 0.10846113
       - serializedVersion: 3
-        time: 0.9121474
-        value: 0.08706421
-        inSlope: 0
-        outSlope: 0
+        time: 1
+        value: 0.19154114
+        inSlope: -2.6695273
+        outSlope: -2.6695273
         tangentMode: 0
         weightedMode: 0
-        inWeight: 0
+        inWeight: 0.14541139
         outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -245,9 +245,9 @@ TrailRenderer:
       key6: {r: 0, g: 0, b: 0, a: 0}
       key7: {r: 0, g: 0, b: 0, a: 0}
       ctime0: 0
-      ctime1: 16384
+      ctime1: 19789
       ctime2: 32768
-      ctime3: 47160
+      ctime3: 44204
       ctime4: 65535
       ctime5: 0
       ctime6: 0

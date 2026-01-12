@@ -5,6 +5,7 @@ public class Rocket : MonoBehaviour
 {
     [SerializeField] GameObject effect;
     [SerializeField] float speed = 25.0f;
+    [SerializeField] float lifetime = 5.0f;
     Rigidbody rb;
 
     void Start()
@@ -15,7 +16,11 @@ public class Rocket : MonoBehaviour
 
     void Update()
     {
-        
+        lifetime -= Time.deltaTime;
+        if (lifetime <= 0.0f)
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
