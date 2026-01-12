@@ -1,10 +1,10 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Rocket : MonoBehaviour
+public class Rocket : Ammo
 {
     [SerializeField] GameObject effect;
-    [SerializeField] float speed = 25.0f;
+    [SerializeField] float speed = .25f;
     [SerializeField] float lifetime = 5.0f;
     Rigidbody rb;
 
@@ -25,6 +25,12 @@ public class Rocket : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        Health health = collision.gameObject.GetComponent<Health>();
+        if (health != null)
+        {
+            health.TakeDamage(damage);
+        }
+
         Destroy(gameObject);
         Instantiate(effect, transform.position, Quaternion.identity);
     }

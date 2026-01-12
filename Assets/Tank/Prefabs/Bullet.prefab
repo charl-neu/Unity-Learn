@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 3519782333692830488}
   - component: {fileID: 2130615922255080457}
   m_Layer: 0
-  m_Name: Rocket
+  m_Name: Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -49,7 +49,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fd3630990d36f149aaf46da4005626b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Rocket
-  damage: 5
+  damage: 1
   effect: {fileID: 1404802046468498, guid: 2938def9583039b498280fae52bf6fd4, type: 3}
   speed: 10
   lifetime: 5
