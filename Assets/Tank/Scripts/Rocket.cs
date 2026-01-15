@@ -31,7 +31,7 @@ public class Rocket : Ammo
             health.TakeDamage(damage);
         }
 
-        Destroy(gameObject);
         Instantiate(effect, transform.position, Quaternion.identity);
+        Destroy(gameObject);
     }
 }
