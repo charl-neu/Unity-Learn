@@ -12,7 +12,6 @@ public class Tank : MonoBehaviour
     [SerializeField] Slider healthBar;
 
     InputAction moveAction;
-    InputAction lookAction;
     InputAction attackAction;
 
     Health health;
@@ -21,7 +20,6 @@ public class Tank : MonoBehaviour
     void Start()
     {
         moveAction = InputSystem.actions.FindAction("Move");
-        lookAction = InputSystem.actions.FindAction("Look");
         attackAction = InputSystem.actions.FindAction("Attack");
 
         attackAction.started += ctx => OnAttack();
@@ -36,7 +34,7 @@ public class Tank : MonoBehaviour
         transform.Translate(Vector3.forward * speed * Time.deltaTime * direction);
 
         // rotation (left/right)
-        float rotation = moveAction.ReadValue<Vector2>().x + lookAction.ReadValue<Vector2>().x;
+        float rotation = moveAction.ReadValue<Vector2>().x;
         transform.Rotate(Vector3.up * rotation * rotationSpeed * Time.deltaTime);
 
         // check if "Fire" key was pressed, if so instantiate the ammo (rocket)

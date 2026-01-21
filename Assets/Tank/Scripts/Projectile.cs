@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Rocket : Ammo
+public class Projectile : Ammo
 {
     [SerializeField] GameObject effect;
     [SerializeField] float speed = .25f;
