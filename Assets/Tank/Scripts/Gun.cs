@@ -6,7 +6,7 @@ public class Gun : MonoBehaviour
     [SerializeField] Ammo ammo;
     [SerializeField] Transform muzzle;
     
-    [SerializeField] float fireRathe = 1.0f; 
+    [SerializeField] float fireRate = 1.0f; 
     [SerializeField] int maxAmmoCount = 20;
 
     private int ammoCount;
@@ -37,7 +37,7 @@ public class Gun : MonoBehaviour
 
     IEnumerator ResetFireCR()
     {
-        yield return new WaitForSeconds(1.0f / fireRathe);
+        yield return new WaitForSeconds(1.0f / fireRate);
         IsReadyToFire = true;
     }
 }
