@@ -1,7 +1,9 @@
+using System.Collections;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
+using UnityEngine.SceneManagement;
 
 public class TankGameManager : MonoBehaviour
 {
@@ -46,7 +48,18 @@ public class TankGameManager : MonoBehaviour
 
     public void OnGameWin()
     {
-        print("you win!");
-        Time.timeScale = 0f;    
+        StartCoroutine(ResetGameCR(2.0f));
+    }
+
+    public void OnGameOver()
+    {
+        print("game over!");
+        StartCoroutine(ResetGameCR(2.0f));
+    }
+
+    IEnumerator ResetGameCR(float time)
+    {
+        yield return new WaitForSeconds(time);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

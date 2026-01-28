@@ -1,10 +1,13 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Health : MonoBehaviour
 {
+    [SerializeField] int scoreValue = 100;
     [SerializeField] float maxHealth = 10.0f;
     [SerializeField] GameObject hitEffect;
     [SerializeField] GameObject destroyEffect;
+    [SerializeField] UnityEvent destroyEvent;
     private float hp;
     public float HP
     {
@@ -37,11 +40,13 @@ public class Health : MonoBehaviour
         HP -= damage;
         if (HP <= 0.0f)
         {
-            TankGameManager.Instance.Score += 100;
+            TankGameManager.Instance.Score += scoreValue;
 
             if (destroyEffect != null)
                 Instantiate(destroyEffect, transform.position, Quaternion.identity);
             destroyed = true;
+            destroyEvent?.Invoke();
+
             Destroy(gameObject);
         } else if (hitEffect != null)
         {

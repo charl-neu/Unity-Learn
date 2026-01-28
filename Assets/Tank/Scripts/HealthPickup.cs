@@ -7,6 +7,7 @@ public class HealthPickup : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("HealthPickup triggered by: " + other.name);
         if (other.TryGetComponent(out Health health))
         {
             health.OnHeal(amount);
