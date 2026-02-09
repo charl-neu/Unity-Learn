@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class Gun : MonoBehaviour
+public class Gun : MonoBehaviour, IItem, IEquippable, IUsable
 {
     [SerializeField] Ammo ammo;
     [SerializeField] Transform muzzle;
@@ -39,5 +39,30 @@ public class Gun : MonoBehaviour
     {
         yield return new WaitForSeconds(1.0f / fireRate);
         IsReadyToFire = true;
+    }
+
+    void IUsable.OnUse(Actor actor)
+    {
+        OnFire();
+    }
+
+    void IEquippable.OnEquip(Actor owner)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    void IEquippable.OnUnequip(Actor owner)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void OnPickip(Actor owner)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void OnDrop(Actor owner)
+    {
+        throw new System.NotImplementedException();
     }
 }
