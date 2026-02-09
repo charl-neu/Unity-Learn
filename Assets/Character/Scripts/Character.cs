@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
-public class Character : Actor, IMovable, IJumpable, IAttackable
+public class Character : Actor, IMovable, IJumpable, IAttackable, ISprintable
 {
     [SerializeField] Animator animator;
 
@@ -45,6 +45,10 @@ public class Character : Actor, IMovable, IJumpable, IAttackable
         // reduce acceleration while in the air for smoother movement control
         if (!onGround) acceleration *= 0.5f;
 
+        
+        animator?.SetBool("OnGround", onGround);
+        
+
         // extract horizontal velocity (ignoring vertical movement)
         Vector3 vXZ = new Vector3(velocity.x, 0, velocity.z);
 
@@ -84,8 +88,12 @@ public class Character : Actor, IMovable, IJumpable, IAttackable
 
     public void Jump()
     {
-        velocity.y = Mathf.Sqrt(-2.0f * gravity * jumpHeight);
-        //animator?.SetTrigger("Jump");
+        if (controller.isGrounded)
+        {
+            velocity.y = Mathf.Sqrt(-2.0f * gravity * jumpHeight);
+            animator?.SetTrigger("Jump");
+            //animator?.SetTrigger("Jump");
+        }
     }
 
     public void Attack()
@@ -96,5 +104,15 @@ public class Character : Actor, IMovable, IJumpable, IAttackable
     public void Move(Vector3 direction)
     {
         moveDirection = direction;
+    }
+
+    public void StartSprint()
+    {
+        isSprinting = true;
+    }
+
+    public void StopSprint()
+    {
+        isSprinting = false;
     }
 }

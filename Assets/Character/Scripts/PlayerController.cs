@@ -5,6 +5,8 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Actor))]
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] Transform view;
+
     Actor actor;
 
     IMovable movable;
@@ -15,6 +17,7 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         actor = GetComponent<Actor>();
+        view ??= Camera.main.transform;
 
         movable = actor as IMovable;
         attackable = actor as IAttackable;
@@ -31,15 +34,18 @@ public class PlayerController : MonoBehaviour
         attackable?.Attack();
     }
 
-    void OnSprint()
+    void OnSprint(InputValue value)
     {
-        sprintable?.StartSprint();
+        if (value.isPressed) sprintable?.StartSprint();
+        else sprintable?.StopSprint();
     }
-    
-    void OnMove(InputValue value) 
-    {
+
+    void OnMove(InputValue value)
+    { 
         Vector2 input = value.Get<Vector2>();
-        movable?.Move(new Vector3(input.x, 0, input.y));
+        Vector3 moveDirection = Quaternion.AngleAxis(view.rotation.eulerAngles.y, Vector3.up) * new Vector3(input.x, 0, input.y);
+        
+        movable?.Move(moveDirection);
     }
             
     
