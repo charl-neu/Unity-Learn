@@ -38,6 +38,12 @@ public class SceneExample : Singleton<SceneExample>
 
     IEnumerator LoadSceneCoroutine(string sceneName)
     {
-        yield return null;
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneName);
+        while (!asyncLoad.isDone)
+        {
+            float progress = asyncLoad.progress;
+            Debug.Log(progress);
+            yield return null;
+        }
     }
 }
